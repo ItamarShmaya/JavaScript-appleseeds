@@ -1,6 +1,6 @@
-let john = [89, 421, 10];
-let mike = [45, 453, 44];
-let mary = [97, 487, 105]; 
+let john = [89, 89, 89];
+let mike = [89, 89, 89];
+let mary = [89, 89, 89]; 
 let johnAvg = avgScore(john);
 let mikeAvg = avgScore(mike);
 let maryAvg = avgScore(mary);
