@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <meta charset="UTF-8" />
+ <meta http-equiv="X-UA-Compatible" content="IE=edge" /
+>
+ <meta name="viewport" content="width=device-width, 
+initial-scale=1.0" />
+ <title>Document</title>
+ </head>
+ <body>
+ <h1>Header</h1>
+ <p>Paragraph</p>
+ <a href="#">link</a>
+ <img src="" alt="" />
+ <div class="x">Div with a class</div>
+ <div id="y">Div with an id</div>
+ <input type="text" />
+ <input type="text" />
+ <input type="text" />
+ </body>
+ <script>
+ //your js code here
+//  1.
+//  const h1 = document.getElementsByTagName("h1")[0];
+//  const p = document.getElementsByTagName("p")[0];
+//  const a = document.getElementsByTagName("a")[0];
+//  const img = document.getElementsByTagName("img")[0];
+//  const divX = document.getElementsByClassName("x")[0];
+//  const divY = document.getElementById("y");
+//  const input1 = document.getElementsByTagName("input")[0];
+//  const input2 = document.getElementsByTagName("input")[1];
+//  const input3 = document.getElementsByTagName("input")[2];
+
+//  2.
+
+ const h1 = document.querySelector("h1");
+ const p = document.querySelector("p");
+ const a = document.querySelector("a");
+ const img = document.querySelector("img");
+ const divX = document.querySelector(".x");
+ const divY = document.querySelector("#y");
+ const input1 = document.querySelectorAll("input")[0];
+ const input2 = document.querySelectorAll("input")[1];
+ const input3 = document.querySelectorAll("input")[2];
+ console.log(h1);
+ console.log(p);
+ console.log(a);
+ console.log(img);
+ console.log(divX);
+ console.log(divY);
+ console.log(input1);
+ console.log(input2);
+ console.log(input3);
+
+//  3.
+// const inputs = document.querySelectorAll("input");
+// inputs.forEach(input => console.log(input));
+const inputs = document.getElementsByTagName("input");
+for(let i = 0; i < inputs.length; i++) {
+  console.log(inputs[i]);
+}
+ </script>
+</html>

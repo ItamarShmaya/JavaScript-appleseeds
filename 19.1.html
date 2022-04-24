@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Document</title>
+ <script src="./script.js" defer></script>
+ </head>
+ <body>
+ <ul>
+  <li>title 1</li>
+  <li class="start-here">title 2</li>
+  <li>
+    <ul>
+      <li>sub title 1</li>
+      <li>sub title 2</li>
+      <li>sub title 3</li>
+    </ul>
+  </li>
+  <li>title 3</li>
+ </ul>
+ <div>
+  <p>Hello World!</p>
+ </div>
+
+ <script>
+   const startHereLi = document.querySelector(".start-here");
+  //  1.
+   startHereLi.textContent = "main title";
+  //  2.
+  const li4 = document.createElement("li");
+  li4.textContent = "sub title 4";
+  startHereLi.parentElement.children[2].children[0].appendChild(li4);
+  // 3.
+  console.log(startHereLi.nextElementSibling.nextElementSibling.remove());
+  // console.log(startHereLi.parentElement.children[3].remove());
+  // 4.
+  const title = document.querySelector("title");
+  title.textContent = "Master Of The Dom";
+  // 5.
+  const p = document.querySelector("p");
+  p.textContent = "lkdjsflkdsjflkdsjflkdsj";
+
+ </script>
+ </body>
+</html>
