@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>some text</p>
+  <button id="plus">+</button>
+  <button id="minus">-</button>
+  
+  <script>
+    const p = document.querySelector("p");
+    const [plus, minus] = document.querySelectorAll("button");
+    plus.addEventListener("click", () => {
+      const fs = getComputedStyle(p).fontSize;
+      let fsNumber = +fs.replace("px", "");
+      if(fsNumber < 100) {
+        p.style.fontSize = `${++fsNumber}px`;
+      }
+    })
+    minus.addEventListener("click", () => {
+      const fs = getComputedStyle(p).fontSize;
+      let fsNumber = +fs.replace("px", "");
+      if(fsNumber > 6) {
+        p.style.fontSize = `${--fsNumber}px`;
+      }
+    })
+  </script>
+</body>
+</html>
