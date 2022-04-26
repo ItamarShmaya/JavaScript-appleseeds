@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form id="form">
+    <label for="name">Name: </label>
+    <input type="text" name="name" id="name" required>
+    <label for="age">Age: </label>
+    <input type="number" name="age" id="age" required>
+    <label for="email">Email: </label>
+    <input type="email" name="email" id="email" required>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    const form = document.getElementById("form");
+    const inputs = document.querySelectorAll("input");
+    const [name, age, email] = inputs;
+    const info = {};
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if(info.age < 1) {return alert("age must be atleast 1")};
+      let isConfirmred = confirm(`Name: ${info.name}\nAge: ${info.age}\nEmail: ${info.email}\nconfirm?`);
+      if(isConfirmred) {
+        for(let input of inputs) {
+          input.value = ""; 
+        }
+        alert("Congratulations you successfully sent this form");
+      }
+    })
+
+    for(let input of inputs) {
+      input.addEventListener("input", (event) => {
+        info[event.target.name] = event.target.value;
+      })
+    }
+  </script>
+</body>
+</html>

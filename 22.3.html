@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body,
+    html {
+      width: 100%;
+      height: 100%;
+    }
+
+    main {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .box {
+      border: 2px solid black;
+      width: 30px;
+      height: 30px;
+      align-self: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #text {
+      font-weight: bold;
+      font-size: 20px;
+    }
+    button {
+      width: 50px;
+      align-self: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Welcome to Guess Letter Game </h1>
+    <div class="box">
+      <p id="letter">?</p>
+    </div>
+    <p id="text">Guess a letter</p>
+    <h2>Keys guessed</h2>
+    <p id="keys-guessed"></p>
+    <button>Yes</button>
+  </main>
+
+  <script>
+    const letter = document.getElementById("letter");
+    const text = document.getElementById("text");
+    const h2 = document.querySelector("h2");
+    const guessed = document.getElementById("keys-guessed");
+    const btn = document.querySelector("button");
+    const letters = "abcdefghijklmnopqrstuvwxyz";
+    let randomLetter = letters[Math.floor(Math.random() * 26)];
+    console.log(randomLetter);
+
+    function game(e) {
+      keyInput = e.key.toLowerCase();
+      if(!(/^[a-z]$/i.test(keyInput) && keyInput.length === 1)) {
+        text.style.color = "red";
+        return text.innerText = "Please, enter a valid letter";
+      } 
+
+      if(keyInput === randomLetter) {
+        rightGuess(e);
+      } else {
+        text.innerText = "Nope, wrong letter";
+        text.style.color = "red";
+        if(guessed.innerText.includes(keyInput)) {
+          text.innerText = `${e.key} has already been guessed`;
+          text.style.color = "red";
+        } else {
+          guessed.innerText += ` ${keyInput},`;
+        }
+      }
+    }
+
+    function rightGuess(e) {
+      letter.innerText = e.key;
+      guessed.innerText = "";
+      guessed.style.display = "none";
+      text.innerText = "Right letter!";
+      text.style.color = "green";
+      h2.innerText = "Would you like to play again?";
+      btn.style.display = "block";
+      window.removeEventListener("keyup", game)
+    }
+
+    function reset() {
+      letter.innerText = "?";
+      guessed.style.display = "block";
+      text.innerText = "Guess a letter";
+      text.style.color = "black";
+      h2.innerText = "Keys guessed";
+      btn.style.display = "none";
+    }
+
+    window.addEventListener("keyup", game);
+
+    btn.addEventListener("click", () => {
+      randomLetter = letters[Math.floor(Math.random() * 26)]
+      reset();
+      window.addEventListener("keyup", game);
+    })
+
+
+  </script>
+</body>
+</html>
