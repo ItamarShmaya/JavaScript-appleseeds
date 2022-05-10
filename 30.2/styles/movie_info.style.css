@@ -1,0 +1,39 @@
+#movie-container {
+  color: var(--primary-color);
+  font-size: 2rem;
+}
+
+.movie-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.title {
+  font-size: 4rem;
+}
+
+.ratings {
+  display: flex;
+  gap: 1rem;
+}
+
+.ratings li{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+  padding: 2rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 10px;
+  width: 6rem;
+  height: 6rem;
+  font-size: 1rem;
+}
+
+.logo {
+  width: 2rem;
+  height: 2rem;
+}

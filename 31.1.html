@@ -1,0 +1,100 @@
+<!-- Instructions
+We are going to use this star wars api to get information.
+We want to get information of 10 characters.
+We want the following information:
+1. Name
+2. Height
+3. Hair Color
+4. Planet they came from
+5. Planet population
+We want you to create an array of objects that will store all 
+of this information.
+Create 
+the object
+structure 
+like this:
+Each object will have the following:
+a key, value of hair,
+a key, value of height
+a key, value of name
+a key of planet who’s value is an object
+ - inside that object you have a key, value of the planets 
+name and key, value of the population. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Star Wars API</title>
+</head>
+<body>
+  <script>
+    
+    async function getPeople(n) {
+      const people = [];
+      let url;
+      for(let i = 1; i <= n; i++) {
+        url = `https://swapi.dev/api/people/${i}/`
+        try {
+          const person = await getApiData(url);
+          if(person.detail === "Not found") throw new Error("URL not found")
+          const { name, height, hair_color, homeworld } = person;
+          const planetInfo = await getApiData(homeworld)
+          const {name: planetName, population} = planetInfo;
+          const personInfo = {
+            name,
+            height,
+            hair_color,
+            planet: {
+              planetName,
+              population
+            }
+          }
+          people.push(personInfo);
+        } catch(e) {
+          console.log(e);
+        }
+      }
+      return people;
+    }
+
+  async function getApiData(url) {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  }
+
+  async function displayPeople(n) {
+    const people = await getPeople(n);
+    let table = document.createElement("table");
+    table.innerHTML = `
+    <table>
+      <caption>Star Wars</caption>
+        <tr>
+          <th>Name</th>
+          <th>Height</th>
+          <th>Hair</th>
+          <th>Planet Name</th>
+          <th>Population</th>
+        </tr>`;
+    for(let i = 0; i < people.length; i++) {
+      table.innerHTML += `
+      <tr>
+        <td>${people[i].name}</td>
+        <td>${people[i].height}</td>
+        <td>${people[i].hair_color}</td>
+        <td>${people[i].planet.planetName}</td>
+        <td>${people[i].planet.population}</td>
+      </tr>`;
+    }
+    table.innerHTML += `</table>`;
+    document.body.append(table);
+  }
+
+  displayPeople(10);
+  </script>
+</body>
+</html>
+

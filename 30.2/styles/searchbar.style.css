@@ -1,0 +1,43 @@
+
+  #form {
+  background: var(--primary-color);
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+#searchbar {
+  height: 50%;
+  width: 30%;
+  padding: 1rem;
+}
+
+#searchbar:focus {
+  outline: none;
+  border: 2px solid var(--secondary-color);
+}
+
+#year {
+  height: 50%;
+  width: 5%;
+  padding: 1rem;
+}
+
+#year:focus {
+  outline: none;
+  border: 2px solid var(--secondary-color);
+}
+#searchBtn {
+  height: 50%;
+  width: 10%;
+  border-radius: 20px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+#searchBtn:hover {
+  cursor: pointer;
+}
